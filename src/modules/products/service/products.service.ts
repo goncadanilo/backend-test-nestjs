@@ -11,6 +11,13 @@ export class ProductsService {
   ) {}
 
   async add(data: StoreProductDto) {
+    const productAlreadyExists = await this.repository.findOne({ id: data.id });
+
+    if (productAlreadyExists) {
+      const { id, title } = productAlreadyExists;
+      return { id, title };
+    }
+
     const { id, title } = await this.repository.save(data);
 
     return { id, title };
