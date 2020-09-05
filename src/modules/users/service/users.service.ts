@@ -9,14 +9,15 @@ export class UsersService {
   constructor(@InjectRepository(Users) private repository: Repository<Users>) {}
 
   async store(data: StoreUserDto): Promise<number> {
-    const userAlreadyExists = await this.repository.findOne(data.email);
+    const userAlreadyExists = await this.repository.findOne({
+      email: data.email,
+    });
 
     if (userAlreadyExists) {
       throw new BadRequestException('User with same email already exists');
     }
 
     const { id } = await this.repository.save(data);
-    this.repository.findOne();
 
     return id;
   }
