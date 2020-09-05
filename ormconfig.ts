@@ -6,8 +6,8 @@ module.exports = {
   password: '',
   database: 'aftersale-backend-test',
   entities: ['src/modules/**/entity/*{.ts,.js}'],
-  migrations: ['src/infra/database/migrations/*{.ts,.js}'],
+  migrations: ['src/shared/infra/database/migrations/*{.ts,.js}'],
   cli: {
-    migrationsDir: 'src/infra/database/migrations',
+    migrationsDir: 'src/shared/infra/database/migrations',
   },
 };
