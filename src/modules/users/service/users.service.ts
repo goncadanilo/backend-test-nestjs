@@ -1,5 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { hashSync } from 'bcryptjs';
 import { Repository } from 'typeorm';
 import { BcryptService } from '../../../shared/services/bcrypt.service';
 import { StoreUserDto } from '../dtos/store-user.dto';
@@ -22,8 +23,10 @@ export class UsersService {
       throw new BadRequestException('User with same email already exists');
     }
 
-    data.password = await this.bcrypt.hash(data.password);
-    const { id } = await this.repository.save(data);
+    const { id } = await this.repository.save({
+      ...data,
+      password: hashSync(data.password, 8),
+    });
 
     return id;
   }
