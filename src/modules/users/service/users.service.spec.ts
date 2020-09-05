@@ -48,4 +48,13 @@ describe('UsersService', () => {
       }
     });
   });
+
+  describe('findByEmail', () => {
+    it('should return user by email', async () => {
+      const result = new Users();
+      jest.spyOn(repository, 'findOne').mockImplementation(async () => result);
+
+      expect(await service.findByEmail('any@email.com')).toBe(result);
+    });
+  });
 });
