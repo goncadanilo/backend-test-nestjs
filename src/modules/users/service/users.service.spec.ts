@@ -1,18 +1,15 @@
 import { BadRequestException } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { BcryptService } from '../../../shared/services/bcrypt.service';
 import { Users } from '../entity/users.entity';
 import { UsersService } from './users.service';
 
 describe('UsersService', () => {
   let service: UsersService;
   let repository: Repository<Users>;
-  let bcrypt: BcryptService;
 
   beforeEach(async () => {
     repository = new Repository();
-    bcrypt = new BcryptService();
-    service = new UsersService(repository, bcrypt);
+    service = new UsersService(repository);
   });
 
   describe('store', () => {
