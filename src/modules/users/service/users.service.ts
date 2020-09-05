@@ -27,4 +27,8 @@ export class UsersService {
 
     return id;
   }
+
+  async findByEmail(email: string): Promise<Users> {
+    return await this.repository.findOne({ email });
+  }
 }
