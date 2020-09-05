@@ -6,8 +6,8 @@ module.exports = {
   password: '',
   database: 'aftersale-backend-test',
   entities: ['src/modules/**/entity/*{.ts,.js}'],
-  migrations: ['src/shared/infra/database/migrations/*{.ts,.js}'],
+  migrations: ['src/shared/infra/typeorm/migrations/*{.ts,.js}'],
   cli: {
-    migrationsDir: 'src/shared/infra/database/migrations',
+    migrationsDir: 'src/shared/infra/typeorm/migrations',
   },
 };
