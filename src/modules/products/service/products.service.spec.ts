@@ -1,4 +1,4 @@
-import { BadRequestException } from '@nestjs/common';
+import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { DeleteResult, Repository } from 'typeorm';
 import { Products } from '../entity/products.entity';
 import { ProductsService } from './products.service';
@@ -64,6 +64,19 @@ describe('ProductsService', () => {
 
       await service.delete({ productId: 1, userId: 1 });
       expect(deleteSpy).toBeCalledWith(1);
+    });
+
+    it('should not remove products from favorites if it is not in favorites', async () => {
+      jest
+        .spyOn(service, 'findByFavorite')
+        .mockImplementation(async () => undefined);
+
+      try {
+        await service.delete({ productId: 1, userId: 1 });
+      } catch (error) {
+        expect(error).toBeInstanceOf(NotFoundException);
+        expect(error.message).toEqual('Product not found');
+      }
     });
   });
 });
