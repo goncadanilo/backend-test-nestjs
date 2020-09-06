@@ -10,7 +10,7 @@ export class ProductsService {
     @InjectRepository(Products) private repository: Repository<Products>,
   ) {}
 
-  async add(data: AddProductDto) {
+  async add(data: AddProductDto): Promise<Products> {
     const productAlreadyExists = await this.repository.findOne({
       where: { userId: data.userId, productId: data.productId },
     });
