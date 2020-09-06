@@ -17,7 +17,7 @@ describe('UsersService', () => {
       const result = new Users();
       jest.spyOn(repository, 'save').mockImplementation(async () => result);
       jest
-        .spyOn(repository, 'findOne')
+        .spyOn(service, 'findByEmail')
         .mockImplementation(async () => undefined);
 
       expect(
@@ -31,7 +31,7 @@ describe('UsersService', () => {
 
     it('should not store user with duplicate email', async () => {
       const result = new Users();
-      jest.spyOn(repository, 'findOne').mockImplementation(async () => result);
+      jest.spyOn(service, 'findByEmail').mockImplementation(async () => result);
 
       try {
         await service.store({
