@@ -1,3 +1,4 @@
+import { BadRequestException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Products } from '../entity/products.entity';
 import { ProductsService } from './products.service';
@@ -21,24 +22,27 @@ describe('ProductsService', () => {
 
       expect(
         await service.add({
-          id: 1,
+          productId: 1,
           title: 'any_title',
           userId: 1,
         }),
       ).toHaveProperty('id');
     });
 
-    it('should return the product if it is already in favorites', async () => {
+    it('should not add products in favorites if it is already in favorites', async () => {
       const result = new Products();
       jest.spyOn(repository, 'findOne').mockImplementation(async () => result);
 
-      expect(
+      try {
         await service.add({
-          id: 1,
+          productId: 1,
           title: 'any_title',
           userId: 1,
-        }),
-      ).toHaveProperty('id');
+        });
+      } catch (error) {
+        expect(error).toBeInstanceOf(BadRequestException);
+        expect(error.message).toEqual('This product is already in favorites');
+      }
     });
   });
 });
