@@ -51,7 +51,7 @@ Esse projeto foi desenvolvido durante o processo seletivo da [Aftersale](https:/
 
 ## :arrow_forward: Como rodar
 
-Antes de tudo, instale as dependências do projeto com o seguinte comando `yarn` ou `npm install`.
+Antes de tudo, instale as dependências do projeto com o seguinte comando `yarn` ou `npm install`. Também crie uma cópia do `.env.example` como `.env` e defina as variáveis de ambiente.
 
 #### Node.js
 

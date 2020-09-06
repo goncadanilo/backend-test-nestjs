@@ -27,7 +27,7 @@ export class ProductsController {
   async add(@Param('productId') productId: string, @Request() req: any) {
     const product = await this.http
       .get(
-        `https://269a1ec67dfdd434dfc8622a0ed77768:4e788173c35d04421ab4793044be622f@send4-avaliacao.myshopify.com/admin/api/2020-01/products/${productId}.json`,
+        `https://${process.env.SHOPIFY_API_KEY}:${process.env.SHOPIFY_API_KEY}@${process.env.SHOPIFY_BASE_URL}/${productId}.json`,
       )
       .toPromise()
       .then(res => res.data.product)
