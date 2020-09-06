@@ -49,6 +49,8 @@ Esse projeto é um serviço que faz a integração com uma loja [Shopify](https:
 
 Esse projeto foi desenvolvido durante o processo seletivo da [Aftersale](https://after.sale/).
 
+[Documentação](https://github.com/goncadanilo/aftersale-backend-test/blob/develop/docs.md).
+
 ## :arrow_forward: Como rodar
 
 Antes de tudo, instale as dependências do projeto com o seguinte comando `yarn` ou `npm install`. Também crie uma cópia do `.env.example` como `.env` e defina as variáveis de ambiente.
