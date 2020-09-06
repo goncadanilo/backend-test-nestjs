@@ -4,15 +4,18 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Users } from '../../users/entity/users.entity';
 
 @Entity()
 export class Products {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
+
+  @Column({ name: 'product_id', type: 'bigint' })
+  productId: number;
 
   @Column()
   title: string;

@@ -13,6 +13,14 @@ export class CreateProducts1599341780897 implements MigrationInterface {
         name: 'id',
         type: 'int',
         isPrimary: true,
+        isGenerated: true,
+        generationStrategy: 'increment',
+      },
+      {
+        name: 'product_id',
+        type: 'bigint',
+        length: '20',
+        isNullable: false,
       },
       {
         name: 'title',
