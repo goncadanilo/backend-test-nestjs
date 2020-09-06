@@ -1,7 +1,12 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AddProductDto } from '../dtos/add-product.dto';
+import { RemoveProductDto } from '../dtos/delete-product.dto';
 import { Products } from '../entity/products.entity';
 
 @Injectable()
@@ -11,14 +16,31 @@ export class ProductsService {
   ) {}
 
   async add(data: AddProductDto): Promise<Products> {
-    const productAlreadyExists = await this.repository.findOne({
-      where: { userId: data.userId, productId: data.productId },
-    });
+    const productAlreadyExists = await this.findByFavorite(
+      data.userId,
+      data.productId,
+    );
 
     if (productAlreadyExists) {
       throw new BadRequestException('This product is already in favorites');
     }
 
     return await this.repository.save(data);
+  }
+
+  async delete(data: RemoveProductDto): Promise<void> {
+    const product = await this.findByFavorite(data.userId, data.productId);
+
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    await this.repository.delete(data.productId);
+  }
+
+  async findByFavorite(userId: number, productId: number): Promise<Products> {
+    const pruductFound = await this.repository.findOne({ userId, productId });
+
+    return pruductFound;
   }
 }
