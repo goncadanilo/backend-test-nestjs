@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { UsersModule } from '../users/users.module';
@@ -11,8 +12,9 @@ import { LocalStrategy } from './strategies/local.strategy';
   imports: [
     UsersModule,
     PassportModule,
+    ConfigModule.forRoot({ isGlobal: true }),
     JwtModule.register({
-      secret: 'JWT_SECRET_KEY',
+      secret: process.env.JWT_SECRET_KEY,
       signOptions: { expiresIn: '1d' },
     }),
   ],
