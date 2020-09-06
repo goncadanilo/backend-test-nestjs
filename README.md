@@ -32,7 +32,7 @@
 <br>
 
 <p align="center">
-  <img alt="Desafio Fale Mais" src=".github/banner.png" width="85%">
+  <img alt="Desafio Fale Mais" src=".github/banner.png" width="90%">
 </p>
 
 ## :rocket: Tecnologias
@@ -41,7 +41,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Nest.js](https://nestjs.com/) para criação da aplicação.
 - [MySql](https://www.mysql.com/) para armazenamento dos dados.
-- [Docker](https://www.docker.com/) para conteinerização da aplicação.
+- [Docker](https://www.docker.com/) para conteinerização da aplicação.(Implementar)
 
 ## 📋 Descrição
 
@@ -57,11 +57,14 @@ Antes de tudo, instale as dependências do projeto com o seguinte comando `yarn`
 
 #### Node.js
 
+- Execute as migration: `yarn typeorm migration:run`
 - Para rodar a aplicação use o comando `yarn start` ou `npm run start`.
 - Para rodar a aplicação em modo watch, use o comando `yarn start:dev` ou `npm run start:dev`.
 - Se tudo ocorrer bem a aplicação vai estar disponível no endereço: **http://localhost:3000/v1/**.
 
 #### Docker
+
+(Implementar)
 
 #### Testes
 
