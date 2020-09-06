@@ -26,7 +26,7 @@ describe('ProductsService', () => {
           title: 'any_title',
           userId: 1,
         }),
-      ).toHaveProperty('id');
+      ).toBe(result);
     });
 
     it('should not add products in favorites if it is already in favorites', async () => {
