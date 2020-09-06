@@ -62,7 +62,7 @@ describe('AuthService', () => {
   describe('login', () => {
     it('shoult return an authentication token', async () => {
       expect(
-        await authService.login({ email: 'any@email.com', userId: 'any_id' }),
+        await authService.login({ email: 'any@email.com', id: 1 }),
       ).toHaveProperty('token');
     });
   });
