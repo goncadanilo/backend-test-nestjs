@@ -79,4 +79,13 @@ describe('ProductsService', () => {
       }
     });
   });
+
+  describe('findByFavorite', () => {
+    it('should return a favorite product', async () => {
+      const result = new Products();
+      jest.spyOn(repository, 'findOne').mockImplementation(async () => result);
+
+      expect(await service.findByFavorite(1, 1)).toBe(result);
+    });
+  });
 });
