@@ -1,5 +1,6 @@
 import {
   Controller,
+  Delete,
   HttpCode,
   HttpService,
   NotFoundException,
@@ -40,5 +41,15 @@ export class ProductsController {
     };
 
     return await this.productsService.add(data);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete(':productId')
+  @HttpCode(204)
+  async delete(@Param('productId') productId: string, @Request() req: any) {
+    return await this.productsService.delete({
+      productId: Number(productId),
+      userId: req.user.id,
+    });
   }
 }

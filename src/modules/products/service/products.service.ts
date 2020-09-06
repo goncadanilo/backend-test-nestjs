@@ -35,7 +35,7 @@ export class ProductsService {
       throw new NotFoundException('Product not found');
     }
 
-    await this.repository.delete(data.productId);
+    await this.repository.delete(product.id);
   }
 
   async findByFavorite(userId: number, productId: number): Promise<Products> {
