@@ -1,5 +1,5 @@
 import { BadRequestException } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 import { Products } from '../entity/products.entity';
 import { ProductsService } from './products.service';
 
@@ -17,7 +17,7 @@ describe('ProductsService', () => {
       const result = new Products();
       jest.spyOn(repository, 'save').mockImplementation(async () => result);
       jest
-        .spyOn(repository, 'findOne')
+        .spyOn(service, 'findByFavorite')
         .mockImplementation(async () => undefined);
 
       expect(
@@ -31,7 +31,9 @@ describe('ProductsService', () => {
 
     it('should not add products in favorites if it is already in favorites', async () => {
       const result = new Products();
-      jest.spyOn(repository, 'findOne').mockImplementation(async () => result);
+      jest
+        .spyOn(service, 'findByFavorite')
+        .mockImplementation(async () => result);
 
       try {
         await service.add({
@@ -43,6 +45,25 @@ describe('ProductsService', () => {
         expect(error).toBeInstanceOf(BadRequestException);
         expect(error.message).toEqual('This product is already in favorites');
       }
+    });
+  });
+
+  describe('delete', () => {
+    it('should remove products from favorites', async () => {
+      const deleted = new DeleteResult();
+      const result = new Products();
+      result.id = 1;
+
+      jest
+        .spyOn(service, 'findByFavorite')
+        .mockImplementation(async () => result);
+
+      const deleteSpy = jest
+        .spyOn(repository, 'delete')
+        .mockImplementation(async () => deleted);
+
+      await service.delete({ productId: 1, userId: 1 });
+      expect(deleteSpy).toBeCalledWith(1);
     });
   });
 });
