@@ -88,4 +88,18 @@ describe('ProductsService', () => {
       expect(await service.findByFavorite(1, 1)).toBe(result);
     });
   });
+
+  describe('findByUserId', () => {
+    it('should return all favorite products by user id', async () => {
+      const result = [new Products()];
+      jest
+        .spyOn(repository, 'findAndCount')
+        .mockImplementation(async () => [result, 1]);
+
+      expect(await service.findByUserId(1)).toEqual({
+        total: 1,
+        favorites: result,
+      });
+    });
+  });
 });
