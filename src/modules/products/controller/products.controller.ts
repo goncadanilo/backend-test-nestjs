@@ -1,6 +1,7 @@
 import {
   Controller,
   Delete,
+  Get,
   HttpCode,
   HttpService,
   NotFoundException,
@@ -41,6 +42,13 @@ export class ProductsController {
     };
 
     return await this.productsService.add(data);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  @HttpCode(200)
+  async findByUserId(@Request() req: any) {
+    return await this.productsService.findByUserId(req.user.id);
   }
 
   @UseGuards(JwtAuthGuard)

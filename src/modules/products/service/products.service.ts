@@ -28,6 +28,14 @@ export class ProductsService {
     return await this.repository.save(data);
   }
 
+  async findByUserId(userId: number) {
+    const [favorites, total] = await this.repository.findAndCount({
+      where: { userId },
+    });
+
+    return { total, favorites };
+  }
+
   async delete(data: RemoveProductDto): Promise<void> {
     const product = await this.findByFavorite(data.userId, data.productId);
 
