@@ -3,16 +3,16 @@
 </h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/goncadanilo/aftersale-backend-test.svg">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/goncadanilo/backend-test-nestjs.svg">
 
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/top/goncadanilo/aftersale-backend-test.svg">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/top/goncadanilo/backend-test-nestjs.svg">
 
-  <a href="https://github.com/goncadanilo/aftersale-backend-test/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/goncadanilo/aftersale-backend-test.svg">
+  <a href="https://github.com/goncadanilo/backend-test-nestjs/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/goncadanilo/backend-test-nestjs.svg">
   </a>
 
-  <a href="https://github.com/goncadanilo/aftersale-backend-test/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/goncadanilo/aftersale-backend-test.svg">
+  <a href="https://github.com/goncadanilo/backend-test-nestjs/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/goncadanilo/backend-test-nestjs.svg">
   </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
@@ -41,15 +41,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Nest.js](https://nestjs.com/) para criação da aplicação.
 - [MySql](https://www.mysql.com/) para armazenamento dos dados.
-- [Docker](https://www.docker.com/) para conteinerização da aplicação.(Implementar)
 
 ## 📋 Descrição
 
 Esse projeto é um serviço que faz a integração com uma loja [Shopify](https://www.shopify.com.br/) e permite os usuários favoritar e desfavoritar produtos. Os usuários também podem ver a sua lista de favoritos. Para isso o usuário deve se cadastrar e se autenticar no serviço.
 
-Esse projeto foi desenvolvido durante o processo seletivo da [Aftersale](https://after.sale/).
-
-[Documentação](https://github.com/goncadanilo/aftersale-backend-test/blob/develop/docs.md).
+[Documentação](https://github.com/goncadanilo/backend-test-nestjs/blob/develop/docs.md).
 
 ## :arrow_forward: Como rodar
 
@@ -61,10 +58,6 @@ Antes de tudo, instale as dependências do projeto com o seguinte comando `yarn`
 - Para rodar a aplicação use o comando `yarn start` ou `npm run start`.
 - Para rodar a aplicação em modo watch, use o comando `yarn start:dev` ou `npm run start:dev`.
 - Se tudo ocorrer bem a aplicação vai estar disponível no endereço: **http://localhost:3000/v1/**.
-
-#### Docker
-
-(Implementar)
 
 #### Testes
 
