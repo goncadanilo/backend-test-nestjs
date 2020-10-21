@@ -1,5 +1,5 @@
 <h1 align="center">
-  :rocket: Aftersale - Teste Backend
+  :rocket: Backend Test - NestJS
 </h1>
 
 <p align="center">
