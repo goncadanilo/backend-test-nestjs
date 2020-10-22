@@ -1,5 +1,5 @@
 <h1 align="center">
-  :rocket: Aftersale - Teste Backend | Docs
+  :rocket: Backend Test | Docs
 </h1>
 
 Esse projeto é um serviço que faz a integração com uma loja [Shopify](https://www.shopify.com.br/) e permite os usuários favoritar e desfavoritar produtos. Os usuários também podem ver a sua lista de favoritos. Para isso o usuário deve se cadastrar e se autenticar no serviço.
