@@ -4,8 +4,6 @@
 
 Esse projeto é um serviço que faz a integração com uma loja [Shopify](https://www.shopify.com.br/) e permite os usuários favoritar e desfavoritar produtos. Os usuários também podem ver a sua lista de favoritos. Para isso o usuário deve se cadastrar e se autenticar no serviço.
 
-Esse projeto foi desenvolvido durante o processo seletivo da [Aftersale](https://after.sale/).
-
 ## EndPoints
 
 - **POST v1/users**: Cria um novo usuário
